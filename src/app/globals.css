@@ -1,26 +1,363 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 248, 250, 252;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+  --card-border: #e5e7eb;
+  --card-bg: #ffffff;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  
+  /* Yeni değişkenler */
+  --card-radius: 1rem;
+  --gradient-primary: linear-gradient(135deg, #3b82f6, #2563eb);
+  --gradient-green: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-yellow: linear-gradient(135deg, #f59e0b, #d97706);
+  --gradient-red: linear-gradient(135deg, #ef4444, #dc2626);
+  --gradient-purple: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  --gradient-indigo: linear-gradient(135deg, #6366f1, #4f46e5);
+  --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  --box-shadow-hover: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.1);
+  --animation-speed: 0.3s;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: 248, 250, 252;
+    --background-rgb: 15, 23, 42;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --card-border: #1e293b;
+    --card-bg: #1e293b;
+    --accent-color: #3b82f6;
+    --accent-hover: #60a5fa;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    
+    /* Koyu mod için yeni değişkenler */
+    --box-shadow-hover: 0 10px 25px -5px rgba(15, 23, 42, 0.3), 0 8px 10px -6px rgba(15, 23, 42, 0.2);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color-scheme: light dark;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Özel bileşen stilleri için utility tanımları */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+  transition: all var(--animation-speed) ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--animation-speed) ease;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  box-shadow: var(--box-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+.badge {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.025em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.badge-blue {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.badge-green {
+  background: var(--gradient-green);
+  color: white;
+}
+
+.badge-yellow {
+  background: var(--gradient-yellow);
+  color: white;
+}
+
+.badge-red {
+  background: var(--gradient-red);
+  color: white;
+}
+
+.badge-purple {
+  background: var(--gradient-purple);
+  color: white;
+}
+
+.badge-indigo {
+  background: var(--gradient-indigo);
+  color: white;
+}
+
+.dark .badge-blue {
+  background: rgba(30, 58, 138, 0.5);
+  color: #93c5fd;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.slide-in {
+  animation: slideInRight 0.4s ease-out;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive tasarım için yardımcı sınıflar */
+@media (max-width: 640px) {
+  .card {
+    border-radius: 0.75rem;
+  }
+  
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+/* Özel scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(107, 114, 128, 0.7);
+}
+
+/* Özel arka planlar ve gradient'ler */
+.bg-gradient-blue {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-green {
+  background: var(--gradient-green);
+}
+
+.bg-gradient-yellow {
+  background: var(--gradient-yellow);
+}
+
+.bg-gradient-red {
+  background: var(--gradient-red);
+}
+
+.bg-gradient-purple {
+  background: var(--gradient-purple);
+}
+
+.bg-gradient-cyan {
+  background: var(--gradient-cyan);
+}
+
+.bg-glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .bg-glass {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Kategori kartları için özel stillendirme */
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  height: 100%;
+  transition: all var(--animation-speed) ease;
+  border: none;
+  z-index: 1;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.08;
+  z-index: -1;
+  transition: opacity var(--animation-speed) ease;
+}
+
+.category-card:hover::before {
+  opacity: 0.12;
+}
+
+.category-card .icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  transition: transform var(--animation-speed) ease;
+}
+
+.category-card:hover .icon {
+  transform: scale(1.1);
+}
+
+.category-card.blue::before {
+  background: var(--gradient-primary);
+}
+
+.category-card.green::before {
+  background: var(--gradient-green);
+}
+
+.category-card.yellow::before {
+  background: var(--gradient-yellow);
+}
+
+.category-card.red::before {
+  background: var(--gradient-red);
+}
+
+.category-card.purple::before {
+  background: var(--gradient-purple);
+}
+
+.category-card.indigo::before {
+  background: var(--gradient-indigo);
+}
+
+/* Stat Card Stili */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  transition: all var(--animation-speed) ease;
+}
+
+.stat-card .icon-bg {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Aktivite Listesi Stili */
+.activity-item {
+  border-radius: 0.75rem;
+  transition: all var(--animation-speed) ease;
+  position: relative;
+}
+
+.activity-item:hover {
+  transform: translateX(5px);
+}
+
+.activity-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.25rem;
+}
+
+.btn-float {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all var(--animation-speed) ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
