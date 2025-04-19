@@ -41,8 +41,7 @@ function MainLayout({ children }: { children: React.ReactNode }) {
                 </svg>
               </button>
               <Link href="/" className="flex items-center space-x-2">
-                <img src="/logo.svg" alt="Logo" className="h-8 w-8" />
-                <span className="text-xl font-semibold text-gray-900">PFL</span>
+                <img src="/logo.png" alt="Logo" className="w-[52px] h-[52px]" />
               </Link>
             </div>
           </div>
@@ -77,3 +76,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+

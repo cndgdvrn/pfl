@@ -228,7 +228,7 @@ export default function SleepPage() {
                   </div>
                   
                   {activity.description && (
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    <p className="text-gray-700 dark:text-gray-300 mb-4" style={{ color: 'black' }}>
                       {activity.description}
                     </p>
                   )}

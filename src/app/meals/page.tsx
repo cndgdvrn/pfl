@@ -269,7 +269,7 @@ export default function MealsPage() {
                 
                 <div className="flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                    <h3 className={`font-semibold text-lg ${activity.completed ? 'line-through text-gray-500 dark:text-gray-400' : 'text-gray-900 dark:text-white'}`}>
+                    <h3 className={`font-semibold text-lg ${activity.completed ? 'line-through text-gray-500 dark:text-gray-400' : 'text-gray-900 dark:text-white'}`} style={{ color: 'black' }}>
                       {activity.title}
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -282,7 +282,7 @@ export default function MealsPage() {
                     </div>
                   </div>
                   
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-3" style={{ color: 'black' }}>
                     {activity.description}
                   </p>
                   

@@ -25,7 +25,7 @@ export default function Calendar({ activities, onDateSelect }: CalendarProps) {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4" style={{ color: 'black' , backgroundColor: 'white'}}>
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold dark:text-white">
           {format(currentDate, 'MMMM yyyy', { locale: tr })}

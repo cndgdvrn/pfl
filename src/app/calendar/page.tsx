@@ -37,7 +37,7 @@ export default function CalendarPage() {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-2xl font-bold mb-6 dark:text-white">Takvim</h1>
+      <h1 className="text-2xl font-bold mb-6 dark:text-white" style={{ color: 'black' }}>Takvim</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           <Calendar activities={mockActivities} onDateSelect={handleDateSelect} />
@@ -83,8 +83,8 @@ export default function CalendarPage() {
               )}
             </div>
           ) : (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-              <p className="text-gray-500 dark:text-gray-400">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6" style={{background:'white'}}>
+              <p className="text-black dark:text-gray-400" style={{color:'black'}}>
                 Detayları görüntülemek için bir tarih seçin.
               </p>
             </div>

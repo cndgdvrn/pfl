@@ -201,9 +201,10 @@ export default function SportsPage() {
               </div>
               <input
                 type="search"
-                className="block w-full rounded-lg border-0 py-3 pl-10 pr-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 dark:bg-gray-800 dark:ring-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:ring-blue-500 sm:text-sm"
+                className="block  w-full rounded-lg border-0 py-3 pl-10 pr-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 dark:bg-gray-800 dark:ring-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:ring-blue-500 sm:text-sm" 
                 placeholder="Aktivite ara..."
                 value={searchTerm}
+                style={{backgroundColor: 'white', color: 'black'}}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
@@ -268,7 +269,7 @@ export default function SportsPage() {
                 
                 <div className="flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                    <h3 className={`font-semibold text-lg ${activity.completed ? 'line-through text-gray-500 dark:text-gray-400' : 'text-gray-900 dark:text-white'}`}>
+                    <h3 className={`font-semibold text-lg ${activity.completed ? 'line-through text-gray-500 dark:text-gray-400' : 'text-gray-900 dark:text-white'}`} style={{ color: 'black' }}>
                       {activity.title}
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -281,7 +282,7 @@ export default function SportsPage() {
                     </div>
                   </div>
                   
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-3" style={{ color: 'black' }}>
                     {activity.description}
                   </p>
                   

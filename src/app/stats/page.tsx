@@ -36,7 +36,7 @@ export default function StatsPage() {
   return (
     <div className="container mx-auto px-4">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold dark:text-white">İstatistikler</h1>
+        <h1 className="text-2xl font-bold dark:text-white" style={{ color: 'black' }}>İstatistikler</h1>
         <div className="mt-4 flex space-x-2">
           {(['week', 'month', 'year'] as const).map((t) => (
             <button
