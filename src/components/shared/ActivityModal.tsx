@@ -16,7 +16,6 @@ export default function ActivityModal({
   onClose,
   onSave,
   activity,
-  category,
 }: ActivityModalProps) {
   const [form, setForm] = useState({
     title: activity?.title || '',
