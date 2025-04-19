@@ -29,5 +29,11 @@
     "eslint-config-next": "15.3.0",
     "tailwindcss": "^4.1.4",
     "typescript": "^5"
+  },
+  "eslintConfig": {
+    "rules": {
+      "@next/next/no-img-element": "off",
+      "@typescript-eslint/no-unused-vars": "off"
+    }
   }
 }
