@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import Sidebar from "@/components/layout/Sidebar";
 import { useState, useEffect } from "react";
+import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -59,6 +60,9 @@ function MainLayout({ children }: { children: React.ReactNode }) {
       <main className="flex-1 p-4 pt-20 sm:ml-64 transition-all duration-200">
         {children}
       </main>
+      
+      {/* PWA Yükleme Bildirimi */}
+      <PWAInstallPrompt />
     </div>
   );
 }
@@ -68,8 +72,37 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // PWA için service worker'ı kaydet
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.workbox !== undefined) {
+      // Service worker'ı kaydet
+      const registerServiceWorker = async () => {
+        try {
+          await navigator.serviceWorker.register('/service-worker.js');
+          console.log('Service worker başarıyla kaydedildi');
+        } catch (error) {
+          console.error('Service worker kaydı başarısız:', error);
+        }
+      };
+      
+      registerServiceWorker();
+    }
+  }, []);
+
   return (
     <html lang="tr">
+      <head>
+        <meta name="application-name" content="PFL - Kişisel Aktivite Takip Uygulaması" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="PFL" />
+        <meta name="description" content="Kişisel aktivite ve alışkanlık takibi için PWA uygulaması" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#3B82F6" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body className={`${inter.className} min-h-screen`}>
         <MainLayout>{children}</MainLayout>
       </body>
