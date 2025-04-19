@@ -22,6 +22,11 @@ export default function ActivityModal({
     time: activity?.time || '',
     duration: activity?.duration || '',
     description: activity?.description || '',
+    category: activity?.category || 'sports',
+    categoryId: activity?.categoryId || 'sports-1',
+    createdAt: activity?.createdAt || new Date(),
+    updatedAt: activity?.updatedAt || new Date(),
+    completed: activity?.completed || false
   });
 
   if (!isOpen) return null;

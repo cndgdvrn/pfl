@@ -6,13 +6,16 @@ import { Activity } from '@/types';
 
 const mockActivities: Activity[] = [
   {
-    id: 1,
+    id: "1",
     title: "Sabah Koşusu",
     time: "2024-03-20T08:00",
     duration: "30",
     description: "Parkta 5 km koşu",
     completed: true,
-    category: "sports"
+    category: "sports",
+    categoryId: "sports-1",
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   // ... diğer aktiviteler buraya eklenecek
 ];
