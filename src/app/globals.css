@@ -25,29 +25,10 @@
   --animation-speed: 0.3s;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 248, 250, 252;
-    --background-rgb: 15, 23, 42;
-    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    --card-border: #1e293b;
-    --card-bg: #1e293b;
-    --accent-color: #3b82f6;
-    --accent-hover: #60a5fa;
-    --text-primary: #f8fafc;
-    --text-secondary: #cbd5e1;
-    --text-tertiary: #94a3b8;
-    
-    /* Koyu mod için yeni değişkenler */
-    --box-shadow-hover: 0 10px 25px -5px rgba(15, 23, 42, 0.3), 0 8px 10px -6px rgba(15, 23, 42, 0.2);
-  }
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
   font-family: ui-sans-serif, system-ui, sans-serif;
-  color-scheme: light dark;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -132,11 +113,6 @@ body {
 .badge-indigo {
   background: var(--gradient-indigo);
   color: white;
-}
-
-.dark .badge-blue {
-  background: rgba(30, 58, 138, 0.5);
-  color: #93c5fd;
 }
 
 /* Animasyonlar */
@@ -230,11 +206,6 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dark .bg-glass {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
 /* Kategori kartları için özel stillendirme */
 .category-card {
   position: relative;
@@ -298,21 +269,19 @@ body {
   background: var(--gradient-indigo);
 }
 
-/* Stat Card Stili */
+/* İstatistik kartları için özel stiller */
 .stat-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--card-radius);
-  padding: 1.5rem;
   display: flex;
   align-items: center;
-  transition: all var(--animation-speed) ease;
+  position: relative;
+  padding: 1.25rem;
+  overflow: hidden;
 }
 
 .stat-card .icon-bg {
   position: absolute;
-  top: -15px;
-  right: -15px;
+  right: -10px;
+  top: -10px;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -324,11 +293,9 @@ body {
   transform: translateY(-5px);
 }
 
-/* Aktivite Listesi Stili */
 .activity-item {
-  border-radius: 0.75rem;
   transition: all var(--animation-speed) ease;
-  position: relative;
+  border-radius: 0.75rem;
 }
 
 .activity-item:hover {
@@ -336,8 +303,8 @@ body {
 }
 
 .activity-icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -346,18 +313,22 @@ body {
 }
 
 .btn-float {
-  height: 3.5rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
   width: 3.5rem;
-  border-radius: 9999px;
+  height: 3.5rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all var(--animation-speed) ease;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background: var(--gradient-primary);
+  color: white;
 }
 
 .btn-float:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }

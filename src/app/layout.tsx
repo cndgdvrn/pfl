@@ -2,10 +2,7 @@
 
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import Image from "next/image";
 import Sidebar from "@/components/layout/Sidebar";
-import ThemeToggle from "@/components/shared/ThemeToggle";
-import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { useState, useEffect } from "react";
 import "./globals.css";
 
@@ -26,17 +23,17 @@ function MainLayout({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="flex min-h-screen bg-gray-50">
       <header className={`fixed top-0 z-50 w-full transition-all duration-200 ${
-        scrolled ? 'bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-sm' : 'bg-white dark:bg-gray-800'
-      } border-b border-gray-200 dark:border-gray-700`}>
+        scrolled ? 'bg-white/90 backdrop-blur-sm shadow-sm' : 'bg-white'
+      } border-b border-gray-200`}>
         <div className="px-4 py-3 lg:px-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 type="button"
-                className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
               >
                 <span className="sr-only">Menüyü aç</span>
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -44,20 +41,9 @@ function MainLayout({ children }: { children: React.ReactNode }) {
                 </svg>
               </button>
               <Link href="/" className="flex items-center space-x-2">
-                <div className="relative h-8 w-8">
-                  <Image 
-                    src="/logo.png" 
-                    alt="PFL Logo" 
-                    fill
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-                <span className="text-xl font-semibold dark:text-white">PFL</span>
+                <img src="/logo.svg" alt="Logo" className="h-8 w-8" />
+                <span className="text-xl font-semibold text-gray-900">PFL</span>
               </Link>
-            </div>
-            <div className="flex items-center space-x-3">
-              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -65,7 +51,7 @@ function MainLayout({ children }: { children: React.ReactNode }) {
       
       <aside className={`fixed top-0 left-0 z-40 h-screen pt-16 transition-transform ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } sm:translate-x-0 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700`}>
+      } sm:translate-x-0 w-64 bg-white border-r border-gray-200`}>
         <div className="h-full px-3 py-4 overflow-y-auto">
           <Sidebar />
         </div>
@@ -84,11 +70,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr" suppressHydrationWarning>
+    <html lang="tr">
       <body className={`${inter.className} min-h-screen`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <MainLayout>{children}</MainLayout>
-        </ThemeProvider>
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );

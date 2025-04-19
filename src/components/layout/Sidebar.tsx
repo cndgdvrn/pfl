@@ -60,18 +60,18 @@ function SidebarItem({ item, isActive }: { item: typeof menuItems[0]; isActive: 
     <li>
       <Link
         href={item.path}
-        className={`flex items-center px-3 py-2 rounded-lg transition-colors group hover:bg-gray-100 dark:hover:bg-gray-700 ${
+        className={`flex items-center px-3 py-2 rounded-lg transition-colors group hover:bg-gray-100 ${
           isActive
-            ? 'bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-blue-400 font-medium'
-            : 'text-gray-700 dark:text-gray-300'
+            ? 'bg-gray-100 text-indigo-600 font-medium'
+            : 'text-gray-700'
         }`}
       >
-        <span className={`text-lg mr-3 ${isActive ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'}`}>
+        <span className={`text-lg mr-3 ${isActive ? 'text-indigo-600' : 'text-gray-500'}`}>
           {item.icon}
         </span>
         <span>{item.name}</span>
         {isActive && (
-          <span className="ml-auto w-1 h-5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
+          <span className="ml-auto w-1 h-5 rounded-full bg-indigo-600"></span>
         )}
       </Link>
     </li>
